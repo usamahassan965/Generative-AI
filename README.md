@@ -1,3 +1,5 @@
+![Screenshot (299)](https://github.com/usamahassan965/Generative-AI/assets/96824810/6ef8c58e-4cbb-4299-a81c-7a2c04aa6eba)
+![Screenshot (302)](https://github.com/usamahassan965/Generative-AI/assets/96824810/517fc96c-2616-4b0e-8973-901b096f9c1a)
 # Generative-AI
 Projects related to Deep GANs
 
@@ -59,7 +61,55 @@ Projects related to Deep GANs
 ![Screenshot (275)](https://github.com/usamahassan965/Generative-AI/assets/96824810/087faaf3-d4ac-45af-9fd1-b247129ca5e4)
 
 ## Maximization-Minimization
-- Now, the objective function is writtern in compact form . But it is for the one sample. For the whole sample X and Z, we will take the expectation which is the final orginal expression given by good fellow.
-  
-![Screenshot (276)](https://github.com/usamahassan965/Generative-AI/assets/96824810/50aa1aaf-687d-44ba-aab0-76cc479bc21e)
+- Now, the objective function is writtern in compact form . But it is for the one sample x and z. For the whole sample X and Z, we will take the expectation which is the final orginal expression given by good fellow.
+- For the best discriminator, we need to have the ratio of real data distribution over sum of fake data and real data distrubution. 
 
+![Screenshot (278)](https://github.com/usamahassan965/Generative-AI/assets/96824810/736aece8-52ef-4525-98fd-d1d56bcc64b4)
+
+## Proof of a good discriminator
+
+![Screenshot (280)](https://github.com/usamahassan965/Generative-AI/assets/96824810/ec8af5b4-1138-4938-adf3-84b64e9dc6f3)
+
+![Screenshot (281)](https://github.com/usamahassan965/Generative-AI/assets/96824810/bed40655-caa5-46a0-a6ca-f3eb00598d8c)
+
+### Probability Density Function
+- Calculation of probability density function y in terms of random variable X.
+- Here, we are mapping this concept to our case which is shown below.
+  
+![Screenshot (282)](https://github.com/usamahassan965/Generative-AI/assets/96824810/8e61026e-6cc2-4f6e-9ea5-71a8a1bedafc)
+
+- Proof continues...
+![Screenshot (284)](https://github.com/usamahassan965/Generative-AI/assets/96824810/178af0d1-b8e6-4b44-8e69-73642669858d)
+
+![Screenshot (285)](https://github.com/usamahassan965/Generative-AI/assets/96824810/47320b9c-d1cd-4bb7-81a1-73c57cf7fbd5)
+
+![Screenshot (286)](https://github.com/usamahassan965/Generative-AI/assets/96824810/8cf1c2a9-df20-493d-b158-4b93ab06c38e)
+
+![Screenshot (287)](https://github.com/usamahassan965/Generative-AI/assets/96824810/0cb733b9-ba0b-48b2-9597-762f8326d82e)
+
+- We have proved it optimal but to check if its maximum then take again derivative,
+
+  ![Screenshot (288)](https://github.com/usamahassan965/Generative-AI/assets/96824810/4c137246-88ff-4c33-aa4a-07bb7126f5e4)
+
+### Proof of a good Generator
+
+
+![Screenshot (289)](https://github.com/usamahassan965/Generative-AI/assets/96824810/b3f7117f-170a-4823-a8f2-89c3f7dc679b)
+
+![Screenshot (290)](https://github.com/usamahassan965/Generative-AI/assets/96824810/fcd6ae83-6d54-48ed-aa40-c0902ffc37cd)
+
+![Screenshot (296)](https://github.com/usamahassan965/Generative-AI/assets/96824810/b550df32-ff99-4143-91e7-15a90803d988)
+
+![Screenshot (292)](https://github.com/usamahassan965/Generative-AI/assets/96824810/c953a711-e5e2-472d-9026-9a4304fa7389)
+
+![Screenshot (294)](https://github.com/usamahassan965/Generative-AI/assets/96824810/f062c185-20c3-46e4-a519-7d47679107f0)
+
+![Screenshot (295)](https://github.com/usamahassan965/Generative-AI/assets/96824810/ad3415b7-798a-43cd-ae6e-1f445963c08a)
+
+![Screenshot (299)](https://github.com/usamahassan965/Generative-AI/assets/96824810/977bc0f1-9313-4e1b-8001-a492c05b5636)
+
+![Screenshot (300)](https://github.com/usamahassan965/Generative-AI/assets/96824810/b06e712c-4c81-4831-83b9-e2d782d93441)
+
+![Screenshot (301)](https://github.com/usamahassan965/Generative-AI/assets/96824810/254aaca0-b8ff-4748-a27b-cbc06c6d9883)
+
+![Screenshot (302)](https://github.com/usamahassan965/Generative-AI/assets/96824810/5f2e54c7-a688-475f-8262-6a4da146fc30)
