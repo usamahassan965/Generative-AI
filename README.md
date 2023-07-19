@@ -14,6 +14,7 @@ Projects related to Deep GANs
 ![Screenshot (265)](https://github.com/usamahassan965/Generative-AI/assets/96824810/baf88147-d161-4e1e-b016-1dab09c2be75)
 
 ## Training on Mnist Dataset
+- The generator is trained on Mnist data and it will try to pick the values of the attributes from the orginal distribution of each attribute.
 ![Screenshot (266)](https://github.com/usamahassan965/Generative-AI/assets/96824810/8b1a5579-c8e2-4951-a14e-79ab76b8ada8)
 
 
@@ -28,3 +29,7 @@ Projects related to Deep GANs
 ## Derivation of Loss function
 
 ![Screenshot (272)](https://github.com/usamahassan965/Generative-AI/assets/96824810/360e17cd-1711-42bd-af2d-70e26e065ad2)
+
+- Both log values should be at maximum . For this, D(x) = 1 and D(G(z)) = 0 which is max.
+![Screenshot (274)](https://github.com/usamahassan965/Generative-AI/assets/96824810/f6271f69-f08e-415c-97ef-635f382eda34)
+
