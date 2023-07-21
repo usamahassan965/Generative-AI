@@ -127,6 +127,43 @@ Projects related to Deep GANs
   
 ![Screenshot (306)](https://github.com/usamahassan965/Generative-AI/assets/96824810/48694830-f18c-4b54-b059-071e9c937ac6)
 
-- To overcome this issue, we replace the loss function of log(1-D(G(z)) to log(D(G(z)). Hence, log0 becomes 1 initially and generator gradients update faster initially. For this to happen, we train both equations of discriminator and generator separately.
+- To overcome this issue, we replace the loss function of log(1-D(G(z)) to log(D(G(z)). Hence, log0 becomes 1 initially and generator gradients update faster initially. For this to happen, we train both equations of discriminator and generator separately and we don't use min-max algo.
 
-![Screenshot (307)](https://github.com/usamahassan965/Generative-AI/assets/96824810/654cb386-2dd4-4a3f-99b4-c2bc6d41a3b0)
+![Screenshot (307)](https://github.com/usamahassan965/Generative-AI/assets/96824810/654cb386-2dd4-4a3f-99b4-c2bc6d41a3b0).
+
+## Limitation of GANs
+1. Vanishing gradients of generator which we talked above.
+   
+2. Mode Collapse
+- In this, as the iteration proceeds, the generator starts producing same images and it's called mode collapse.
+- We understand this issue in this way...
+- Each class of image has different gaussian distribution . The generator instead of learning all distributions. It learns only that distribution in which it is performing better and it's trying to fool the discriminator . Hence, the discriminator also looks for other distributions to improve its classification rather than that in which the generator is performing better.
+
+  ![Screenshot (310)](https://github.com/usamahassan965/Generative-AI/assets/96824810/7e76df58-44f3-4e00-9106-1bbac9cc15f0)
+
+- The main reason of this behavior is that the reward for improving one distribution instead of learning others, in which discriminator is good at , is the same. Hence, the generator doesn't try to improve in other modes or distributions. SImilar, is the behavior with discriminator. He tries to improve only for those classes in which he is good at and the generator is weak at producing.
+- In this way, the both model inclined towards one class of distribution and it leads to producing same images and called mode collapsig.
+
+![Screenshot (311)](https://github.com/usamahassan965/Generative-AI/assets/96824810/487ce6a7-5487-4a6a-aeb8-aa531611abbf)
+
+3. Hard to achieve Nash equilibrium
+- As the both models are playing non-coorporative game against each other. Their cost updation is independent of each other and in this way, they start to produce oscillations as iteration increases and never become stable.
+
+  ![Screenshot (313)](https://github.com/usamahassan965/Generative-AI/assets/96824810/dc784ba4-fe4b-4dfc-94f6-916155963f53)
+
+
+4. Problem with Counting
+- Like eyes on faces becomes 3 or more...
+
+  ![Screenshot (314)](https://github.com/usamahassan965/Generative-AI/assets/96824810/f90588ed-efec-478a-9a2d-98d80f14ea3f)
+
+  
+5. Problem with Perspective
+- Couldn't differentiate between 2D and 3D perspective and starts producing according to 2D perspective and hence , mixing backgrounds with the foreground.
+  
+  ![Screenshot (315)](https://github.com/usamahassan965/Generative-AI/assets/96824810/461379ca-b25b-4df8-8e22-39f9d2bdaea0)
+
+6. Problem with global structure
+- Problem with the structure of objects producing unrealistic images.
+  
+![Screenshot (316)](https://github.com/usamahassan965/Generative-AI/assets/96824810/0a8168f1-1093-446b-ae30-f109ea17b54e)
