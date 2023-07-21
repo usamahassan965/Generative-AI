@@ -113,3 +113,20 @@ Projects related to Deep GANs
 ![Screenshot (301)](https://github.com/usamahassan965/Generative-AI/assets/96824810/254aaca0-b8ff-4748-a27b-cbc06c6d9883)
 
 ![Screenshot (302)](https://github.com/usamahassan965/Generative-AI/assets/96824810/5f2e54c7-a688-475f-8262-6a4da146fc30)
+
+## Optimization Algorithm of GANs:
+
+![Screenshot (304)](https://github.com/usamahassan965/Generative-AI/assets/96824810/190db660-131a-4a68-bcb5-dadac142829d)
+
+- Blue dots represents the discriminator distribution function. At initial stages of training (a) , D is able to distinguish between real (Pdata) and fake (Pg(x)) distribution.
+- But as the iteration proceeds, at (b) iteration , discriminator updates to give more good classification function. But at iteration (c) , generator updates and distribution of real and fake data looks very much alike.
+  
+![Screenshot (305)](https://github.com/usamahassan965/Generative-AI/assets/96824810/b25423c8-3f5e-4b2c-904e-666ddab5b2ea)
+
+- Min-Max algorithm creates an issue at the start of training. The reason is at start , the generator generates fake images so discriminator easily classifies them and D(G(z)) approximately equals to zero. Thus, the problem occurs with the generator part of the loss function which is the max function and its log value becomes zero due to which the generator gradient becomes zero and don't update weights in training.
+  
+![Screenshot (306)](https://github.com/usamahassan965/Generative-AI/assets/96824810/48694830-f18c-4b54-b059-071e9c937ac6)
+
+- To overcome this issue, we replace the loss function of log(1-D(G(z)) to log(D(G(z)). Hence, log0 becomes 1 initially and generator gradients update faster initially. For this to happen, we train both equations of discriminator and generator separately.
+
+![Screenshot (307)](https://github.com/usamahassan965/Generative-AI/assets/96824810/654cb386-2dd4-4a3f-99b4-c2bc6d41a3b0)
