@@ -1,0 +1,63 @@
+Activations are functions that take any real number as input, also known as its domain, and outputs a number
+in a certain range using a non-linear
+differentiable function. We typically use them
+for classification between certain layers
+in deep neural networks, and more specifically in GANs. In this video, I'll go over
+what activations are and the reason why they
+are both non-linear and need to be differentiable. Which just means you can
+take the derivative of them, meaning they have a gradient. Take this neural network with two hidden layers
+and multiple inputs. For example x_0 maybe fur color, x_1 is the size of the animal, and all other features. Say this neural network predicts whether these features
+comprise a cat. This will output a probability between 0 and 1 at the end here. What about all these
+nodes in between? All these nodes together compose the entire neural
+network architecture. I'll start by
+demonstrating what occurs at each of these
+individual nodes. A node here takes in information
+from the previous layer and predicts two things which I'm going to split
+with this dotted line. First, it computes z, where i represents
+which node it is. Here it's 0, 1, first node, so i equals 1. L represents the layer, and here is the 0 width layer. Here, it's in the first layer, so again, l is 1. Z here is equal to a sum of various weights on the outputs
+from the previous layer. You see a here, but this a is the other side of these nodes from the
+previous layer coming in. L minus 1 just means
+it's the previous layer, so that's the 0
+width layer here. It looks at all of those
+different values where i equals 0 all the way up
+to i equals n down here. Z is looking at the previous
+layer and weighting them, so z is the outputs of the
+previous layer weighted by these values w. This is
+typically called a linear layer, and both include scaling
+values of weights as well as a bias term which
+will shift those values. It's like saying plus b
+out here, but typically, you can talk that
+into the matrix w. Then on the other side is a, and a is the output of an activation function
+that I'll call g here, that takes in as
+input this z value. I'll go over quickly what differentiable and
+non-linear mean here, because this is what this activation function needs to be. You need your
+activation function g to be differentiable
+and non-linear. It needs to be differentiable
+because you use back propagation for training your neural network and
+updating its parameters, so it needs to be able
+to differentiate and provide gradients to
+the previous layer. It also needs to be non-linear, so the features
+you compute within the neural networks
+can be complex. If you didn't use
+non-linear activations, a neural network
+like this one with multiple hidden
+layers and neurons could actually be collapsed into a simple linear regression. With these raw inputs as x here, these two layers
+could actually just become a single
+layer and there's no non-linearity
+because linear layers you can just stack
+on to each other. Linear regression is just
+one linear layer with a bias term tucked into
+the weight matrix again. In summary, you need non-linear
+differentiable activations to take advantage of deep
+learning models and to have the layers stack onto
+each other to construct a complex neural network to model complex
+nonlinear functions. The non-linearity specifically
+ensures your linear layers don't reduce to a
+single linear layer in linear regression, and so your network can learn
+more complex functions. The differentiability aspect
+ensures your network can learn through back propagation by computing the derivative. You could use any
+custom function as an activation for your
+deep learning models, as long as you make sure that it's non-linear
+and differentiable. Researchers often experiment
+with what works best and you'll learn about commonly
+used activation functions in the next lecture.
