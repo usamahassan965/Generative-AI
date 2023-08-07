@@ -1,0 +1,84 @@
+Even though they've only
+been around since 2014, GANs have already achieved super impressive performance
+across a multitude of tasks. If you haven't seen
+some of their results, you're in for a treat. In this video, I'll show you some cool applications of GANs, like the generation of realistic human faces and the animation of famous artworks. Then you'll get to see some of the amazing projects major
+companies are using them for. This tweet is from
+Ian Goodfellow, who is widely regarded
+as the creator of GANs. It shows a striking
+visualization of the rate at which GANs have
+improved over the years. You can see how GANs
+have progressed from black and white and rather
+inhuman looking faces in 2014 to much higher quality colored photorealistic
+faces in 2018. They've been getting actually even better up until this day. Case-in-point, progress has
+only increased since then in early 2020 in video realistic GAN that could generate
+images like these, which are so high resolution and look like
+professional photographs. They have a soft background
+effect and everything. It's easy to think that
+these people are real, but they actually don't
+exist. Amazing, isn't it? GANs can learn from whatever
+training data they're given. They're not limited to
+reproducing human faces. Here's the model, the
+same one from before, but this time producing cats. If you look closely, you can see some really weird
+looking images because not every generated example
+is perfect in this case. There is some semblance
+of a cat going on here, but of course I've no
+idea what that is. Also something that's
+pretty cool is that you can actually observe
+images with texts on them. This happens because
+as mentioned before, generative models try to
+mimic the distribution of the data you're using to
+train them on, in this case, the training data
+with scraped from the web of all of these cats and this includes a lot of cat memes with meme
+texts on them. What's funny of course is that these meme texts on the
+generated cat memes don't actually make up words because the generative model is
+not trying to model words, but rather the visual
+realistic effect. That being said,
+some of these are actually pretty cute and realistic even though they might not be ready for Reddit just yet. GANs can also perform
+image translation, which just means they
+can take an image from one domain and transform
+it into another. For instance, they can
+transform an image of a horse into a zebra
+and vice versa. What's really interesting is
+that you don't actually need examples of a zebra and a
+horse doing the same things, and instead just transfer
+that style over. In the same way, GANs
+can help you draw. This model can take
+a rough drawing of a landscape and make
+it photorealistic. So you can have brushstrokes
+here on the left. This is a person putting really rough brushstrokes
+together of different classes, such as a cloud, or a mountain, or a lake. Then the GAN, from this really rough sketch is able to produce something
+really photorealistic. In this GIF, a person
+is able to make rough sketches with just
+a few lines and color, and then the GAN can transform them into realistic pictures. GAN can also take a still-life
+portrait, for example, the Mona Lisa, and animate it using the motion of any
+real person's face. They don't even have to look like a Mona Lisa to play the part. If you're reminded of the
+talking portraits at Hogwarts, you're not alone, in a
+sense, GANs are magic. GANs don't stop at 2D images, they can also generate 3D
+objects like chairs and tables. These can be applied
+to fields like generative design where you can create cool furniture
+for your house. There are also
+diverse applications in medicine where you
+can use your GAN for generating artificial
+medical data or even detecting abnormalities
+in X-rays. You'll get to see more
+on this in course 3, but showing all the
+cool applications out there could take hours. Several prominent companies
+have also started using generative adversarial
+networks for a variety of applications. For instance, Adobe is thinking about the
+next generation of Photoshop where novice artists can perform at an expert level, for example, with those doodles. Google is using them for
+text generation largely, but also with images. IBM is using GANs for
+data augmentation, so using a GAN to generate
+synthetic examples to augment the dataset for
+a classifier downstream, for example, if you don't
+have enough data of a certain class or of a
+certain type of image. Snapchat and TikTok
+put them to work in creative new filters which
+you've probably seen and used. Even Disney is using them
+for super-resolution. At the end of the specialization, you'll be able to
+use GANs as well for whatever
+application you like. In summary, you saw the rapid advancements that GANs have achieved in
+the last few years. Well, I showed you several
+really cool applications, I mentioned the way that some major companies
+are using GANs. There are many more
+things to do with GANs, and many potential directions you could take for
+using these models.
