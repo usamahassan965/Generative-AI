@@ -1,0 +1,117 @@
+The generator in a GAN is like it's heart. It's a model that's
+used to generate examples and the one
+that you should be invested in and helping achieve a really high performance at the end of the
+training process. In this video, I'll revisit
+the role of the generator and you'll see how it's able
+to improve its performance. Then I'll show you what it models in terms of probability. So the generators final
+goal is to be able to produce examples from
+a certain class. So if you trained it
+from the class of a cat, then the generator will
+do some computations and output a representation
+of a cat that looks real. So ideally, the generator won't output the same cat at every run, and so to ensure
+it's able to produce different examples
+every single time, you actually will input
+different sets of random values, also known as a noise vector. So here this noise vector
+is actually just a set of values where these
+differently shaded cells are just different values. So you can think of this as 1, 2, 5, 1.5, 5, 5, 2. Then this noise vector
+is fed in as input, sometimes with our class y for cat into the generators
+neural network. This means that these
+features, x_0, x_1, x_2, all the way up to x_n, include the class, as well as, the numbers in this noise vector. So then the generator in this neural network will
+compute a series of nonlinearities from those inputs and return some variables
+that look like a q, brown and white cat and run. So here instead of
+different classes, it's output will
+actually be an image. So you can imagine
+maybe this image has three million pixels, so you can imagine those being three million nodes at the end there that do not
+necessarily represent classes but each pixel's value. In another run, it can
+generate this sphinx cat, maybe in a funnel wrong,
+this savannah cat. These are all with a
+different noise vectors. So let's first
+consider conceptually how the generator
+improves over time. First, you have a noise vector or those random input
+values you saw, which I'm going to represent
+with this Greek symbol here of psi. You pass this into a generator represented by
+a neural network to produce a set of features that can pose an image of a cat or
+an attempt at a cat. For example, your generator
+might generate this. In this image, x-hat is fed
+into the discriminator, which determines how
+real and how fake it thinks it is based on
+its inspection of it. After that, from what the
+discriminator thinks of it, which is this y-hat with a D here representing that it's the
+discriminators predictions, you can compute a
+cost function that basically looks at
+how far the examples produced by the generator
+are being considered real by the discriminator
+because the generator wants this to seem
+as real as possible. So basically, the generator wants y-hat to be
+as close to one, meaning real as possible. Whereas, the discriminator
+is trying to get this to be zero, fake. He uses the difference
+between these two to then update the parameters
+of the generator, and that gets it to improve over time and know which
+direction to move it's parameters to generate
+something that looks more real and will
+fool the discriminator. So once you get a generator
+that looks pretty good, you can save the parameters
+theta of the generator. That typically means freezing those theta values and saving it somewhere and then you
+can load it back up and then sample from
+this safe generator. What sampling
+basically means is you have these random noise vectors, and when you input that
+into the saved generator, it can generate all sorts
+of different examples. So this saved generator
+was not trained on cats, I hope, because it's
+generating dogs. Now that you can continue
+generating new noise vectors, putting it through
+this saved generator, and then sampling more
+dog images in this case. So in the land of probability, the generator models
+the probability of an example such as a cat. In the previous example, it actually was a dog. Of course, you can do
+one of a turtle, bird, or fish as well, please go crazy with that. More generally, the
+generator is trying to model the probability of these
+features of a cat, such as leaking it's paw or having cute whiskers are
+having different types of far, given this class y of a cat. So this is the conditional
+probability of features X given the class Y. However, since we only
+have one class at the moment for let's say
+just generating cats, then Y will always be the
+same and so you don't actually need this here so that you have P of X
+that you're modeling. Of course, if you want your
+generator to learn across all different types of classes and you care about the class, then you do need to
+put that class in. You'll see more on this
+shortly through our Course 1. So now you have P of X across all the different types
+of cats in the world. The generator will model the probability of
+features X without any additional
+conditions and this is because the class Y
+will always be cat, so it's implicit for
+all probabilities X. In this case, it'll
+try to approximate the real distribution of cats. So the most common cat
+breeds will actually have more chances of being generated because they're more
+common in the dataset. Certain features such as
+having pointy ears will be extra common because
+most cats have that. But then more rare
+breeds will have a less likely chance
+of being sampled. so these lines here
+just represent a 3D probability distribution of how the class of cats
+are distributed. So the most common types of
+features that cats carry on would be shown and
+sampled in this middle here, which if you think about
+this as a 3D representation, it's coming out at you. Then a rare breeds or rare looking hats
+will be at the edges. So this means that the
+most common cap rates will have more chances
+to be generated, while the less common ones like the sphinx will be
+produced much more rarely. You'll see in future
+videos how to control the sampling process and
+get what you would like, but right now, the
+generator's job is just to model how cats are in
+the natural world. So to wrap up, the
+generator produces fake data that
+tries to look real. It learns to mimic
+that distribution of features X from the
+class of your data. In order to produce
+different outputs each time it takes random
+features as input. In this week's assignment,
+you'll build a GAN that generates images of
+numerical digits. It has the same setup, you just give it random
+noise and it can produce all these different
+digits that are handwritten. And this is cool because handwriting
+doesn't look perfect, it doesn't look the
+same each time and it would be able to
+model and generate the range of different 5s and 8s and all sorts
+of different digits from this data set of handwritten digits that
+you'll see on the assignment.
