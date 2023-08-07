@@ -1,0 +1,86 @@
+Binary Cross Entropy function, or BCE for short, is used for training GANs. It's useful for these models, because it's especially designed for
+classification tasks, where there are two categories
+like, real and fake. In this video, I'll show you the equation used to
+get the BCE loss, and what every part of
+the equation means. At the end, I'll wrap up this
+lesson by showing you how the BCE cost function looks
+for different labels. Here is the full
+BCE cost function. It might look a little
+bit intimidating, but I'll break down each of these components and also give you examples to provide some
+intuition on how it works. First at the beginning
+here you see a summation sign from 1 to m, as well as dividing by that m. This basically just means
+summing over the variable m, which is actually the number of examples in the entire batch, and taking the average
+of those examples. Taking the average cost
+across this mini-batch. I'll go over what this
+negative sign means later on. Throughout this video, h denotes the predictions
+made by the model. You see that here, y is the labels for the
+different examples. These are the true
+labels of whether something is real or fake. For example, if real
+could be a label of 1, and fake or be a label of 0. X are the features that are passed in through the prediction, so this could be an image, and theta are the parameters of whatever is computing
+that production. In this case, it's probably going to be the discriminator. As the parameters of
+the discriminator, looking at those features, and that's doing
+this, h of x, theta. Often you'll see this also
+written as h of x;theta, and that just means
+parameterized by theta. That's slightly more accurate, but you don't have to
+worry about that now. In these brackets,
+you can break these down into two different terms. Let's look at each of them. The term on the left, is the product of
+the true label y times the log of the prediction, which is h of x, the features parameterized
+by theta for the model. To understand what this
+value is trying to get at, let's look at some examples. The case where the label 0, so let's say this
+means it's fake, and you have any prediction here, then this value
+actually results in 0. If you have a prediction of 1, let's say that's real, and you have a really high
+prediction that is close to 1, of 0.99, then you also get
+a value that's close to 0. In the case where it
+actually is real, but your prediction is
+terrible, and it's 0, so far from 1, you
+think it's fake, but it's actually real, then this value is
+extremely large. This is largely caused
+by the log there. What this is trying to say, is that in the case when
+the true prediction is 0, this term doesn't matter, it just goes to 0. This term is mainly for when the prediction
+is actually just 1, and it makes it 0 if
+your prediction is good, and it makes it negative infinity if your prediction is bad. Now looking at the second term, it looks very similar, save some of these
+minus signs in here. In this case, if your label is 1, then 1 minus y is equal to 0. Actually if your prediction is anything, this will
+evaluate to 0, and if your prediction is saying, Hey, that's pretty fake, gets close to 0, then
+this value is close to 0. However, if it's fake, but your prediction
+is really far off, and thinks it's
+real, then this term evaluates to negative infinity. Basically, each of these
+terms evaluates to negative infinity if for
+their relevant label, the prediction is really bad. That brings us to this
+negative sign a little bit. If either of these
+values evaluates to something really big in
+the negative direction, this negative sign is
+crucial to making sure that is a positive number
+and positive infinity. Because for our cost function, what you typically want is
+a high-value being bad, and your neural
+network is trying to reduce this value as
+much as possible. Getting predictions
+that are closer, evaluating to 0 makes sense here, because you want to minimize your cost function as you learn. In summary,, one term in the cost function is
+relevant when the label 0, the other one is
+relevant when it's 1, and in either case, the logarithm of a value
+between 1-0 was calculated, which returns that
+negative result. That's why you want this
+negative term at the beginning, to make sure that this is high, or greater than, or equal to 0. Now I'll show you what the
+loss function looks like for each of the labels over
+all possible predictions. In this plot, you can have your prediction
+value on the x-axis, where h is your model, and gives a prediction based
+on x parameterized by theta. The loss associated with that training example
+is on the y-axis. In this case, the
+loss simplifies to the negative log
+of the prediction. When the prediction is close
+to 1, here at the tail, the loss is close to 0 because your prediction
+is close to the label. Good job here, this is good. When the prediction is
+close to 0 out here, unfortunately your loss
+approaches infinity, so a really high value because the prediction and the
+label are very different. The opposite is true
+when the label is 0, and the loss function reduces to the negative log of 1
+minus that prediction. When the prediction
+is close to 0, the loss is also close to 0. That means you're doing great. But when your prediction
+is closer to 1, but the ground truth is 0, it will approach infinity again. In summary, the BCE
+cost function has two main terms that are relevant
+for each of the classes. Whether prediction and
+the label are similar, the BCE loss is close to 0. When they're very different, that BCE loss
+approaches infinity. The BCE loss is performed across a mini-batch
+of several examples, let say n examples, maybe five examples
+where n equals 5. It takes the average of
+all those five examples. Each of those examples
+can be different. One of them can be 1, the other four could be 0, for their different classes.
