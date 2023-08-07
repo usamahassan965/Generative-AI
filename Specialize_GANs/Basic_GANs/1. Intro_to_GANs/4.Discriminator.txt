@@ -1,0 +1,75 @@
+So GANs are composed of two models,
+the discriminator and the generator. In this video, I'll show you first
+how the discriminator works. The discriminator is a type of classifier,
+so I'll start with a refresher
+on what that is. Then you'll see in probabilistic terms
+what classifiers learn to model, and at the end of this video, I'll show you how it all translates
+to the GANs discriminator. So as a quick recap,
+the goal of the classifier is to distinguish between different classes.
+So given this image of a cat, the classifier should be able to tell
+that it's a cat and a dog, for example. In fact, it can learn to differentiate
+cats from multiple different classes and this depends on which classes
+you wanted to differentiate. Probably the simplest case is
+probably just cat and not cat. Classifiers aren't limited to determining
+image classes, so you could have this piece of text right here, it meows and
+plays with yarn to classify into a cat. You could have a video of a cat purring,
+all sorts of different things here. So one type of model for
+a classifier is using a neural network and this neural network can
+taken some features X. For example here there's X0, X1, X2, all
+the way up to Xn, so n different features. It computes a series of nonlinearities, which I'll get into later and outputs
+the probabilities for a set of categories. And, it thinks that it's 45% likelihood of
+this image being a cat, 45% likelihood of this image being a dog, and
+10% likelihood of this image being a bird. And in the beginning, the model probably
+won't know how to classify correctly, so that's why cat and dog are probably
+on par with each other here. And it learns overtime trying to improve
+its predictions according to the true labels from the data. So you'll tell it at the end, no. This is 100% cat, 0% dog, 0% bird. So this learning process can
+be summarized as follows. You have some input features X, such as
+that it purrs, and it likes to play with yarn, and a set of labels wise
+associated with each of your classes. For example, a cat, a dog, and a bird. And you use your neural network,
+which takes in those features and learns these set of parameters,
+which I'll call theta. And these are each of those nodes
+you see in that neural network. And these weights change overtime as
+it learns what a cat looks like and what a dog looks like and
+what a bird looks like. And these parameters data are trying to
+map these features X to those labels Y. And those predictions you'll call Y hat
+because they're not exactly the exact Y labels. They're trying to be the Y labels. And so the goal is to reach a point where
+the difference between the true values Y in the predictions Y hat is minimized. And this is where a cost
+function comes in, and it's computed by comparing
+how closely Y hat is to Y. And that's the goal of this cost function,
+which tells this discriminative model. This neural network, how close it
+is to classifying cat correctly and dog correctly and bird correctly. So from this cost function,
+you can update those parameters. The nodes in that neural network according
+to the gradient of this cost function. And that just means generally which
+direction those parameters should go to try to get to the right answer,
+to try to get to a Y hat, that's as close as possible to Y. And then you repeat this process until
+your classifier is in good shape. So let's take a little ride into math land
+where the goal of the discriminator is to model the probability of each class. For example, not just cat here, but
+turtle, bird, dog, and fish as well. Given a set of input features, for
+example, here is an image of a cat. So given this image of a cat,
+which class is this? In other words, this is modeling the probability
+of class Y given input features X. And again, these features could be
+features extracted from this image, such as that it purrs and that it likes to play
+with yarn, but also the pixels themselves. And this is a conditional probability
+distribution because it's predicting the probability of class Y conditioned
+on a certain set of features, which is what this vertical bar is for. So the model only makes a prediction of
+a class once it's seen the input features. And in this case, it's in image. And now, bring it back to the GAN context. The discriminator is a classifier
+that inspects the examples. They're fake examples, the real examples, and determines whether they
+belong to the real or fake class. So taking in this fake Mona Lisa here, and instead of determining whether there
+is a cat, dog, or bird in this image, determining how fake this image is,
+and here it thinks it's 85% fake. In probabilistic terms, the discriminator
+models the probability of an example being fake given a set of inputs X. For instance, it will look at this
+picture of a fake Mona Lisa and determined that with 85%
+probability it isn't the real one. And as a simplification,
+it will be classified as fake. And you can also think
+of this as 0.15 real and rewrite this as a probability
+over real given that image. The discriminator models the probability
+of an example being fake given that set of inputs X. For instance, in a look at a picture
+of a Mona Lisa or a fake Mona Lisa and determine that with 85% probability
+this isn't the real one, 0.85 fake. So in this case, it will be classified
+as fake and that information. And not just this fake information, but this 0.85 will be given to
+the generator to improve its efforts. In summary,
+the discriminator is a type of classifier that learns to model the probability
+of an example being real or fake given that set of input features,
+like RGB pixel values for images. The output probabilities from the
+discriminator are the ones that help the generator learn to produce
+better looking examples overtime
