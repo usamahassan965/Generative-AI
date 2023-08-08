@@ -1,0 +1,88 @@
+Pooling and up-sampling are really common layers in
+convolutional neural networks. Which are just neural networks
+that use convolutions. Pooling is used to reduce
+the size of the input while up-sampling is used to increase
+the size of that input. Let's revisit what pooling is and how it works
+and after that, I'll show you what up-sampling is and how it relates to pooling. Pooling is used to lower the dimension of the input
+images by taking the mean or finding the maximum
+value of different areas. For instance, a
+picture of this cat after a pooling layer will result in this blurry image with a lower size or lower resolution. In this example, you can see
+that the color palette and the color distribution over both images is
+still very similar. The shapes on the blurry image still resemble the original. It'll be much less expensive
+to do computations on this pooled layer than it
+is on this original image. Pooling is really just trying to distill that information. Let's take a look at one of the most popular types of
+pooling called max pooling. Here is how it works with
+a really simple example. Take this four-by-four grayscale image and suppose that you use max pooling to reduce it to this two-by-two output
+image out here. What you do is you visit
+different sections or windows of the image in a really
+similar way as convolutions. To achieve the desired outcome, you have to use a
+two-by-two pooling filter in a sense and I'm
+saying filter here, but there are no learned weights. It's just the window
+that's being passed across and it'll have
+a stride equal to two, so that I won't visit any
+pixel more than once. Starting in the top left
+corner of the image, you find the maximum value
+in that window, which is 20. You just take that and you
+put it here in the output. Next you do it to the same
+in the top right corner. Again, not overlapping
+any pixels. You look here, the
+largest value is 45, you put it out here. Then you keep doing that until you've covered the entire
+image so at the end you have this two-by-two output containing
+the maximum of each of these two-by-two sections that you visited from the input. What max pooling is doing
+here is that it's getting the most salient information
+from this image, which are these really
+high values here. This can be really important for distilling information where you really care about only the
+most salient information. Sometimes this is not
+an image and this is just an intermediate
+layer so this is really just extracting
+the weights with the highest values on this
+intermediate section. There are other pooling
+other than max pooling. There's average
+pooling, which is also fairly commonly used
+where you just take the average instead of the max in that window and min pooling
+where you took the minimum. Again, it's really
+important to know here that pooling doesn't have
+any learnable parameters. That's where it's
+really different from convolutions. These
+are not learned. There's was just a simple rule
+applied across the image. Okay, so now up-sampling has the opposite
+effect of pooling. Given this lower
+resolution image, up-sampling has a goal of outputting one that
+has higher resolution. You see that it's not perfect. To do this, it actually
+requires inferring values for the additional pixels and there are a few different
+methods to do this. One easy way to
+up-sample is known as nearest neighbors up-sampling
+and using this method, you can copy the values
+of the pixels from your input multiple times
+to fill your output. To illustrate, take
+this two-by-two grayscale image that you want to up-sample to this
+four-by-four output here. First, you assign the value
+in the top left corner from the input to the top
+left pixel in the output. The other values from the input to pixels
+that are added distance of two pixels from that top left corner
+and for other cases, this distance might be
+different depending on the size of the enlargement
+that you would want. There'll be exactly one pixel in between each of these,
+including this diagonal. Then assign the same value to every other pixel as it is
+to its nearest neighbor. For every two-by-two
+corner in the output, the pixel values
+will look the same. You can also think of this
+as putting these values into the corners first and for every other pixel finding
+its nearest neighbor. Again, pooling for up-sampling, there are many different
+ways to do up-sampling, like linear and
+bi-linear interpolation. Feel free to explore what those do and how those
+are implemented. But you really don't
+have to worry about implementing them because
+programming frameworks like TensorFlow and
+PyTorch actually take care of this
+whole process for you. You just need to
+know that they infer the values from missing
+pixels in the output by looking at the known values from the input and
+just like pooling, up-sampling layers don't have
+any learnable parameters. It's just some fixed rule. These are just
+different fixed rules. In summary, a pooling
+layer reduces the size of inputs while
+up-sampling does the opposite. Unlike convolutions,
+neither pooling nor up-sampling layers have those learnable parameters,
+just fixed rules. Coming up, I'll introduce you to an up-sampling method
+which is not quite an up-sampling layer known as transpose convolution that does have learnable parameters.
