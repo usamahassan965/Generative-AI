@@ -1,0 +1,90 @@
+Batch normalization
+might sound daunting, but it's a pretty
+straightforward procedure that you could
+implement from scratch. However, frameworks like
+PyTorch actually do it for you. In this video, I'll
+show you how it works. You'll get familiar
+with the operations of batch normalization in this video and how they differ during training versus testing. Batch normalization creates these happy normalized
+distribution of values like you see here. Take this neural network
+with two hidden layers, multiple inputs and
+a single output. I'll focus on this
+internal hidden layer to explain how batch
+normalization works. From the inputs, z here is coming from all the previous nodes. Batch normalization
+considers every example z_i in the batch. For example, you could
+have a batch size of 32, so you would have 32 zs here. Again, as a reminder, i here represents this is
+the ith node in this layer, and l represents this
+is the lth layer. For example, here is
+layer zero, layer one, or here is node zero, node i1. Batch normalization takes the size of the
+batch, for example, 32 and it has 32 zs here. From those 32 zs, it wants to normalize
+it so that it has a mean of zero and a
+standard deviation of one. What you do is you get the
+mean of the batch here Mu, and that's just the mean
+across all these 32 values. Then you also get the variance of the batch sigma squared, which is again the value
+from these 32 values. To normalize these z
+values to a mean of zero and a standard
+deviation of one, you subtract the mean and you divide by the
+standard deviation, on here it's the square
+root of the variance, and you add an Epsilon here just to make sure that the
+denominator isn't zero. At the end, you obtain these normalized z
+values which I'll call z-hat. All right. After you get the
+normalized value z-hat, you have learned perimeters in the batch normalization layer. What that means is that you will have a value called Beta, which will be the shift
+factor and Gamma, which will be the scale factor. These parameters are learned during training to ensure that the distribution to which
+you're transforming z is the optimal
+one for your task. After you completely
+normalize things to z-hat, you then rescale them based on these learned values,
+Gamma and Beta. This is the primary
+difference between normalization of inputs
+and batch normalization. Because here you are not forcing your distribution to have zero mean and standard deviation of one every single time, it's after normalizing things, then you can go on and rescale things to an
+unnecessary task. What's key here is that
+batch normalization gives you control over what that distribution
+will look like moving forward in
+the neural network, and this final value after the shifting and scaling
+will be called y. This y is what then goes into
+this activation function. Now, that was during
+training, and during testing, you want to prevent different
+batches from getting different means and
+standard deviations because that can mean
+the same example, but in a different
+batch would yield different results because
+it was normalized differently due to
+the specific batch mean or specific batch
+standard deviation. Instead, you want to have stable predictions during test time. During testing, what you
+use is the running mean and standard deviation
+that was computed over the entire training set, and these values are now fixed after training,
+they don't move. But after that, you just
+follow a very similar process. Here is the expected
+value of those z values, so that's a running mean, and here's the variance
+of those z values, where when you take
+the square root here, will get you the
+standard deviation. You still have that
+Epsilon here to prevent that denominator
+from going to zero. After that, you just follow the same process as
+you did in training and you feed these
+normalized values into the learn parameters and then
+the activation function. But don't worry
+too much about the details of this process. As I told you before, frameworks like TensorFlow and PyTorch keep track of
+these statistics for you. All you have to do is create
+a layer called batch norm, and then when your model
+is put into the test mode, the running statistics
+will be computed over the whole data set for
+you or saved for you, so that's really, really nice. You might have also
+heard of test mode being called test-time
+inference time, evaluation or eval mode. These are roughly equivalent
+and you can think of them as not training time. In summary, batch
+normalization differs from standard normalization
+because during training, you use this statistics
+from each batch, not the whole data set, and this reduces computation
+time and makes training faster with our waiting for
+the whole data set to be gone through before you can
+use batch normalization. Secondly, by introducing learnable shift and
+scale parameters, you don't force the target
+distribution to have a zero mean and a standard
+deviation of one. Finally, at test time, the running statistics from training are applied to
+the entire data set, which keeps predictions
+stable because the training values are
+independent and fixed. One important note is
+[inaudible] frameworks have this entire process
+implemented for you, for training and testing. All you need to do is know
+when to use it in your [inaudible] or some
+other spectacular model you want to train. You also get to learn about more advanced
+normalization techniques in the upcoming weeks, so stay tuned on that.
