@@ -1,0 +1,51 @@
+Now that you're familiar
+with convolutions, pooling, and upsampling layers, let's talk about transposed
+convolutions. In this video, I'll talk about transposed convolutions and
+upsampling technique that uses a learnable filter to enlarge the size of your input, then I'll show you how the
+outputs from this method have a really particular
+issue related to the way the pixel
+values are calculated. Take this example with
+a two-by-two input that you want to upsample to
+a three-by-three output. Using a transposed convolution, you can use a two-by-two learned filter with stride
+equal to one to accomplish this task by following a really
+similar procedure to the one for convolutions that I demonstrated earlier
+in this course. You start by taking the top-left value from your input and getting its product with every value in the two-by-two filter. Then you save this value in the top two-by-two left
+corner of your output. Here are the multiplied
+values from that operation. Next, you shift the filter by your stride of one and you repeat the same process on
+this next pixel and now it's at the top right
+corner of your input, as well as these four pixels
+out here in your output. You keep the products
+there and where there is overlap you add it to
+the previous product. After that, you move to
+the bottom left corner of your input and take the
+product with the filter, send the result, and so on and so forth until you've
+covered your entire input. With this computation, you can see that some of the values in the output are
+influenced much more heavily by the values
+from the input. For instance, the center
+pixel in the output is influenced by all the
+values in the input, while the corners are
+influenced by just one value. This is the transposed
+convolution operation and that's all it's doing
+in upsampling that. In the filter, these
+values are learned. But there is an issue that this center pixel is visited four times
+and is influenced by all pixels while the other
+ones are not and this causes a common issue that arises when using transposed
+convolutions. This image shows a
+real output from a transposed convolution where the circle is not
+actually generated. It's just zoom in to
+this checkerboard issue. Notice that the image
+has a pattern resembling a checkerboard and this arises because when you
+upsample with a filter, some pixels are
+influenced much more heavily while the ones
+around it are not. Despite this issue, however, transposed convolutions
+are still fairly popular in the research
+community, though, using upsampling followed
+by convolution is becoming a more
+popular technique now to avoid this
+checkerboard problem. To recap, transposed
+convolutions are used as an upsampling method
+and they have learnable parameters
+unlike, upsampling layers. A problem arising from the use of transposed
+convolutions, however, is that the output
+has a checkerboard problem. Nevertheless, these layers
+are still pretty popular and you'll use them for some of the models in the specialization.
