@@ -1,0 +1,44 @@
+When using BCE loss
+to train a GAN, you often encounter
+mode collapse, and vanishing gradient
+problems due to the underlying cost function
+of the whole architecture. Even though there is
+an infinite number of decimal values
+between zero and one, the discriminator,
+as it improves, will be pushing
+towards those ends. In this video, you'll see a different underlying
+cost function called Earth mover's distance, that measures the
+distance between two distributions and generally outperforms the one associated with BCE loss for training GANs. At the end I'll show you why this helps with the vanishing
+gradient problem. So take this generated
+and real distributions with the same variance
+but different means, and assume they might be
+normal distributions. What the Earth Mover's
+distance does, is it measures how different
+these two distributions are, by estimating the amount
+of effort it takes to make the generated distribution
+equal to the real. So intuitively, the
+generate distribution was a pile of dirt, how difficult would it be to
+move that pile of dirt and mold it into the shape and location of the
+real distribution? So that's what this Earth
+mover's distance means. The function depends
+on both the distance and the amount that the generated distribution needs to be moved. I'll show you a function that calculates this in
+the next video. So the problem with BCE loss is that as a discriminator improves, it would start giving more extreme values
+between zero and one, so values closer to one
+and closer to zero. As a result, this became less helpful feedback
+back to the generator. So the generator would stop learning due to vanishing
+gradient problems. With Earth mover's
+distance, however, there's no such ceiling
+to the zero and one. So the cost function
+continues to grow regardless of how far apart
+these distributions are. The gradient of
+this measure won't approach zero and as a result, GANs are less prone to
+vanishing gradient problems and from vanishing gradient
+problems, mode collapse. So wrapping up, Earth mover's
+distance is a function of the effort to make a
+distribution equal to another. So it depends on both
+distance and amount. Unlike BCE, it doesn't have flat regions when
+the distributions start to get very different, and the discriminator
+starts to improve a lot. So approximating this measure eliminates the vanishing
+gradient problem, and reduces the likelihood
+of mode collapse in GANs. In the next few videos, I'll show you a loss function that uses Earth mover's distance
+for training GANs.

@@ -1,0 +1,65 @@
+Wasserstein Loss or W-Loss solves some problems
+faced by GANs, like mode claps and
+vanishing gradients. But for it to work well, there is a special condition that needs to be met by the critic. In this video, you'll see what the continuity condition on the critic neural
+network means and why that condition is important when using W-Loss for training GANs, and trust me, it's worth
+it, so stay tuned. W-Loss is a simple
+expression that computes the difference
+between the expected values of the critics output for
+the real examples x and its predictions on
+the fake examples g(z). The generator tries to
+minimize this expression, trying to get the generative
+examples to be as close as possible to the
+real examples while the critic wants to maximize
+this expression because it wants to differentiate between
+the reals and the fakes, it wants the distance to
+be as large as possible. However, for training
+GANs using W-Loss, the critic has a
+special condition. It needs to be something called 1-Lipschitz Continuous or
+1-L Continuous for short. This condition sounds more sophisticated than it really is. For a function like the critics neural network to be at 1-Lipschitz Continuous, the norm of its gradient
+needs to be at most one. What that means is
+that, the slope can't be greater than
+one at any point, its gradient can't
+be greater than one. To check if a function here, for example, this
+function you see here, f(x) equals x squared, is
+1-Lipschitz Continuous, you want to go along
+every point in this function and make sure its slope is less
+than or equal to one, or its gradient is less than or equal to one, and
+what you can do is, you can actually draw two lines, one where the slope
+is exactly one at this certain point that
+you're evaluating function, and one where the
+slope is negative one where you're
+evaluating our function. You want to make sure
+that the growth of this function never
+goes out of bounds from these lines because
+staying within these lines means that the
+function is growing linearly. Here this function is
+not Lipschitz Continuous because it's coming out
+in all these sections. It's not staying within
+this green area, which suggests that it's
+growing more than linearly. Look at another example here. This is a smooth curve functions. You want to again check
+every single point on this function before
+you can determine whether or not that this
+is 1-Lipschitz Continuous. Here it looks fine,
+function looks good. Here it also looks
+good, here looks good. Let's say you take
+every single value and the function never grows
+more than linearly. This function is
+1-Lipschitz Continuous. This condition on the
+critics neural network is important for W-Loss because it assures that
+the W-Loss function is not only continuous
+and differentiable, but also that it
+doesn't grow too much and maintain some
+stability during training. This is what makes the underlying Earth
+Movers Distance valid, which is what W-Loss
+is founded on. This is required
+for training both the critic and generators
+neural networks and it also increases
+stability because the variation as the GAN
+learns will be bounded. To recap, the critic, and again that uses
+W-Loss for training needs to be 1-Lipschitz
+Continuous in order for its underlying Earth
+Mover's Distance comparison between the reals and the fakes
+to be a valid comparison. In order to satisfy or try to satisfy this condition
+during training, there are multiple
+different methods. Next, we'll learn about a
+couple of these methods.

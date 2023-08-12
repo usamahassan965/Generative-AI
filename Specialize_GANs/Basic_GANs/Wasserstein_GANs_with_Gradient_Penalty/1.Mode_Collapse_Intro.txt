@@ -1,0 +1,31 @@
+Last week you gave your
+GAN a little bit of an upgrade to generate
+images better. This week you'll explore another major issue
+with GAN training. That's with a GAN generating
+the same thing each time. So a GAN trained on all different dog breeds will only generate
+a golden retriever. That's obviously an issue. This issue happens because the discriminator
+improves but it gets stuck between saying an
+image of a dog looks extremely fake or extremely real. It's a classifier after all, so it's encouraged
+to say it's one real or zero fake
+as it gets better. But in a single
+round of training, if the discriminator only thinks the generator's golden
+retriever looks real, even if it doesn't
+even look that real, then the generator
+will cling on to that golden retriever and only
+produce golden retrievers. Now when the
+discriminator learns that this golden retriever is fake in the next
+round of training, the generator won't know where to go because there's
+really nothing else it has in its arsenal of different images and that's
+the end of learning. The end of learning is very, very bad for these networks. Digging one level deeper, this happens because of
+binary cross-entropy loss, where the discriminator
+is forced to produce a value
+between zero or one, and even though there's an infinite number of decimal values
+between zero and one, it'll approach zero and
+one as it gets better. This week you'll be introduced to a new
+loss function that allows a discriminator to
+say negative four or 100, any number between negative
+infinity and infinity, which mitigates this
+problem and allows both networks to keep on
+learning just like you. Your assignment will
+be implementing this amazing GAN upgrade.
+Let's get started.

@@ -1,0 +1,85 @@
+During this week you'll
+see some problems faced by traditional GANs trained with
+binary cross-entropy loss, or BCE loss, like mode collapse
+and vanishing gradients. I'll show you a very
+simple modification to the GAN's architecture and a new loss-function that'll help you overcome these problems. In this video you see
+what a mode is in a probability density
+distribution as well as what mode
+collapse is and the intuition behind it
+during GAN training. A mode in a
+distribution of data is just an area with a high
+concentration of observations. For instance, the mean value in a normal distribution is the single mode of
+that distribution, and there's certainly
+distributions with multiple modes where the mean doesn't have to be one of them. In this distribution,
+that's bimodal, it has two modes, or multimodal, meaning
+it has multiple modes. More intuitively, any peak on the probability density
+distribution over features is a mode of
+that distribution. For example, take
+handwritten digits represented by
+features x_1 and x_2, meaning that these
+are just dimensions along which you can
+represent these numbers, like values you can use to represent different
+handwritten digits. The probability density
+distribution in this case will be a surface with many peaks
+corresponding to each digit. This is definitely
+multimodal with 10 different modes and different observations
+of the number 7, for example, will
+be represented by similar x_1 and x_2 pairs. Those who values
+there would both be sevens and the one marked in red there in the mean would be
+an average looking seven. You can imagine each of these
+peaks coming out at you in a 3D representation where the darker circle represents
+higher altitudes. Different pairs of x_1 and
+x_2 features would create these handwritten fives here and a value in between
+the seven and five, where it's very low density, so very low probability of
+generating something that is an intermediate between seven and five in
+the real dataset, it would be probably a
+mixture of seven and five. But there's a very
+low probability that you would see that x_1, x_2 pair in this
+in-between space, that would produce an intermediate five
+seven looking number. Different observations of
+the same digit will be grouped together in
+this feature space with high concentration in the
+area with the most common way to write that digit or where that average seven is there and, of course, an average five is in the center of the five mode peak. This probability density distribution over these features, x_1 and x_2, will have 10 modes, one for each of these digits. Many real life
+distributions used for training GANs are
+multimodal like this one, and I'll continue
+with a handwritten digit example to show you what mode collapse might
+mean, which intuitively, as you just get started, sounds like things
+collapsing to one mode or fewer modes and some of
+the modes disappearing. Take a discriminator
+that has learned to be good at identifying which
+handwritten digits are fakes, except for cases where the generated images look
+like ones and sevens. This could mean the
+discriminator is at of local minima of
+its cost function. The discriminator classifies most of the digits correctly, except for the ones that
+resembled those ones and sevens, then this information is
+passed on to the generator. The generator sees
+this and looks at the feedback from the
+discriminator and gets a good idea of how to fool the discriminator
+in the next round. It sees that all the images were misclassified by
+the discriminator, resemble either a one or a seven, so it generates a
+lot of pictures that resemble either of those numbers. Then these generated
+images are then passed on to the discriminator
+in the next round who then misclassifies every
+picture except for maybe the one felt looks
+more like a seven. Generator gets that
+feedback and sees that the discriminator's
+weakness is with the pictures that resembled
+a handwritten one, so this time all the pictures it produces resembled that digit, collapsing to a single mode or the whole distribution of
+possible handwritten digits. Eventually the discriminator will probably catch on
+and learn to catch the generator's fake
+handwritten number ones by getting out of
+that local minima. But the generator
+could also migrate to another mode of the
+distribution and again would collapse again
+to a different mode. Or the generator
+would not be able to figure out where
+else to diversify. To sum up, modes are peaks and the probability distribution
+of our features. Real-world datasets
+have many modes related to each possible
+class within them, like the digits in this
+dataset of handwritten digits. Mode collapse happens
+when the generator learns to fool the discriminator
+by producing examples from a single class from the whole training dataset
+like handwritten number ones. This is unfortunate because, while the generator is optimizing to fool
+the discriminator, that's not what you ultimately
+want your generator to do.
