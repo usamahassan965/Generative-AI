@@ -1,0 +1,81 @@
+Conditional generation
+lets you produce examples from the
+classes you want. For doing that, you need to have a label data-set and somehow pass that class information to both the generator and the
+discriminator during training. Here you'll learn how to tell the generator which
+class to produce and how declassifying an example
+is passing through the discriminator along with
+the image to be classified. You've seen already with
+unconditional generation, the generator needs
+a noise vector to produce random examples. For conditional generation, you also need a vector to tell the generator from which class the generated examples
+should come from. Usually this is a one-hot vector, which means that there are
+zeros in every position except for one position corresponding to
+the class you want. Remember that the noise vector
+is random values as well, but it doesn't have
+to zero or one. As an example, let's say all of these different values in the one-hot class vector
+are different dog breeds; and this second cell here
+corresponds to a husky. Specifying a position of one here means that you want the
+generator to produce a husky. If you had a one somewhere else and a zero on the husky cell, then you would want it to
+produce a different class; for example, a golden retriever. Here the noise vector
+is the one that adds randomness in
+the generation, similar to before; to let you produce a diverse
+set of examples. But now it's a diverse set
+within the certain class, conditioned on the certain class and restricted by
+the second class. There's one-hot
+vector is now what lets you control what
+class to generate. The input to the generator in a conditional GAN is actually a concatenated vector of both the noise and the
+one-hot class information. So it's one huge vector. For example, with a class vector here representing a husky breed, the generator will
+ideally produce a husky dogs from
+one noise vector. But if you change
+that noise vector, it should produce a
+different husky dog; while the class information
+stays the same. So both are [inaudible] huskies, both are the same class. But how do you ensure the generator actually
+produces a husky? This seems like magic. Why doesn't it just
+produce any random dog? Well, that's actually because the discriminator will also be given this class information. The generator, needs to
+fool the discriminator; so you'll see how this happens. The discriminator
+in a similar way will take the examples, but now they're paired with
+the class information as inputs to determine
+if the examples are either real or fake
+representations of that particular class; and that's what's key here. For example, with this
+class of golden retriever, but in image of a beagle dogs. So not a golden
+retriever being fed in. This discriminated arches
+actually say this is fake because that is not a
+real looking golden retriever, even though it's a very real
+looking image of a beagle. This is just 5 percent real
+is what it's going to say. As a result, for the
+discriminator to predict that an example is real, it needs to look
+like the examples from that class in the
+training data set. The training data-set is
+key here because it'll get these real labels next to it. The generator, in order to fool it with a golden retriever, needs to produce a
+realistic golden retriever. Following the last example
+with a golden retriever class, the discriminator will learn
+to predict that the image is more real only if the example looks like
+a golden retriever. Again, this is because the real images will have
+the correct class label, and this encourages the
+generated images to take on the right class as well.
+Pretty cool, right? Digging a little bit deeper, the input to the
+discriminator is an image. How do you go about adding
+that class information? Well, the image is fed in as
+three different channels, RGB, red, green, blue, or just one channel if
+it's a gray-scale image. So that's this image component. Then the one-hot
+class information could also be fed in as additional channels
+where all the channels take on values of all zeros; so all these white blocks
+of the same height and width as the image take
+on values of all zeros. Whereas this black one here
+will take on values of ones. In contrast to that
+one-hot vector, these are typically much
+larger matrices where each channel is full of zeros at every position where
+it's not that class. There are many other less space consuming
+ways of doing this, like compressing this
+information in another format. You can even create
+a separate neural network head to do that for you, which would be prudent if you
+had many different classes. But this approach
+definitely works for the seven or so
+classes you have here; and the model will
+learn that information. To sum up in
+conditional generation, you pass the class
+information to both models. To the generator it's typically a one-hot vector
+concatenated with your noise vector to the discriminator when
+the desired output of the GANs are images, it's one-hot matrices
+representing the channels. The size of the class vector and the number of
+extra channels for the class information is just the same as the number of classes
+you'll be turning on.
