@@ -1,0 +1,54 @@
+In the last couple of weeks, you've seen how GANs work
+and how to build them to produce examples that mimic
+your training dataset. During this week, I'm
+going to show you how to control the output
+and get examples from a particular class or
+for those examples to take on certain features.
+This is pretty fun. In this video, I'll review what unconditional generation is, and it's actually the
+one that you've been using this whole
+time and you'll also be introduced to
+conditional generation by comparison of them both. As a quick recap with
+unconditional generation, you get outputs from
+random classes. You can think of those
+as a gumball machine, where you input a coin and you get a random
+color gumball. If you want to gumball
+of a specific color, say red, you have
+to keep spinning coins until you get it. In this example, the coin is like the random noise vector that your GAN uses for generation and the gumball machine
+is like the generator. Then the gumballs are
+the random outputs, those images you get. You can see what color
+gumballs you might get, just like how you know what
+your GAN is trained on. You can't control what exact color of
+output you will get. On the other hand,
+conditional generation allows you to ask for an example from a specific class and you get what you ask for. It's like a vending machine. You input a coin similar
+to the gumball machine but you input a coin along with a code for an item that you want. For example, A2 for a red soda. But note that you still don't control certain features
+of the soda bottle. You can't get the
+one with the latest expiration date or the bottle that's least damaged or the one that's
+filled up the most, you just get a random red soda. But it is a red soda, not a blue candy bar. Here the coin and the code are
+the inputs for the GAN and the vending machine
+is the generator and the soda is the
+generated output. With a conditional GAN, you get a random example from
+the class you specify. That class is this A2 soda here. Now you have an idea of
+how conditional versus unconditional
+generation are related. Let's compare them a bit. With conditional
+generation, you can get generated examples from the classes you decide while with unconditional
+generation, you get examples
+from a random class. As a result of that, with
+conditional generation, you actually have to
+train your GAN with labeled datasets and
+those labels are on the different
+classes you want while unconditional generation
+doesn't need any labels. You've seen this in previous
+weeks from the course, that you don't need
+any labels you just need a pile
+of real examples. You see how to modify
+your model for this conditional generation
+in the following lectures. What you should take
+away from this video is that conditional
+generation requires labeled datasets for
+training in order to learn how to produce examples
+from desired classes. Coming up, I'll show
+you how the labels from your dataset are fed
+to the generator and discriminator in order
+to train your GAN and produce examples
+from the desired class, like selecting the red soda
+from a vending machine.

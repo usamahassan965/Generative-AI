@@ -1,0 +1,24 @@
+Over the past few weeks, your GANs had been getting
+better and better, but you don't have much control
+over what they generate. It's like at home
+where you don't choose what type of cookie your
+parent or guardian is making, you get oatmeal raisin and maybe tomorrow night
+it's chocolate chip. This is what your
+GANs I've been doing. It's called unconditional
+generation. But in contrast to
+that, at a restaurant, you can order on the menu
+an oatmeal raisin cookie, or a chocolate chip cookie, or any other type of
+cookie that's there. This is called
+conditional generation. You tell your model to generate different items you specify
+or condition on the menu, and you adapt the
+training process so it actually does that. Similarly, there's
+controllable generation. Running with the cookie analogy, this is about figuring out
+how to adapt the inputs to your model without
+changing your model or your chef and their process. It's like turning up or down the heat during
+cooking in order to control certain
+output features like how crispy or how
+gooey your cookie is. This is true for both conditional and
+unconditional generation. This week you'll have
+two assignments, one on building a
+conditional GAN, and the other on
+controllable generation. Let's get started.
